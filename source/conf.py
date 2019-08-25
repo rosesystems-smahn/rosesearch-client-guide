@@ -24,9 +24,9 @@ copyright = u'2019, RoseSystems'
 author = u'RoseSystems'
 
 # The short X.Y version
-version = u'0.0.1'
+version = u'1.0.0'
 # The full version, including alpha/beta/rc tags
-release = u'release'
+release = u'1.0.0v'
 
 
 # -- General configuration ---------------------------------------------------
