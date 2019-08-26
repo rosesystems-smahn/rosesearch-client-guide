@@ -20,7 +20,7 @@ Welcome to RoseSearch-Client-Guide's documentation!
 
 .. toctree::
    :maxdepth: 3
-   :caption: developments:
+   :caption: Developments-Guide:
    :glob:
    :titlesonly:
 
@@ -30,9 +30,4 @@ Welcome to RoseSearch-Client-Guide's documentation!
    developments/ch11-java-perf-guide/ko/*
 
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

@@ -3,12 +3,12 @@
 
 목차
 ---
-1. 전체색인실행
-2. 증분색인실행
-3. 색인작업확인
-4. 색인 스케쥴 On/Off
-5. 동적색인 API
-6. 사전 서비스 API
+1. [전체색인실행](#FULLTEXT_INDEXING)
+2. [증분색인실행](#INCREMENTAL_INDEXING)
+3. [색인작업확인](#INDEX_STATUS_MONITORING)
+4. [색인 스케쥴 On/Off](#INDEX_SCHEDULAR)
+5. [동적색인 API](#DYNAMIC_INDEX_API)
+6. [사전 서비스 API](#DICTIONARY_SERVICE_API)
 
 
 
@@ -17,6 +17,7 @@
 servicePort=8090
 ```
 
+<a name="FULLTEXT_INDEXING"></a>
 ## 1. 전체색인실행
 
 #### 요청 URL
@@ -49,6 +50,8 @@ servicePort=8090
 
 status가 0이면 작업등록 정상, 1이면 에러이다.
 
+
+<a name="INCREMENTAL_INDEXING"></a>
 ## 2. 증분색인실행
 
 #### 요청 URL
@@ -81,6 +84,8 @@ status가 0이면 작업등록 정상, 1이면 에러이다.
 
 status가 0이면 작업등록 정상, 1이면 에러이다.
 
+
+<a name="INDEX_STATUS_MONITORING"></a>
 ## 3. 색인작업확인
 
 #### 요청 URL
@@ -134,6 +139,7 @@ indexingType은 FULL 또는 Add이며, 각각 전체색인과 증분색인을 �
 색인작업이 모두 종료되거나 실행중이 아니면, 아래 예제와 같이 indexingState는 빈 Object가 반환된다.
 
 
+<a name="INDEX_SCHEDULAR"></a>
 ## 4. 색인 스케쥴 on/off
 
 #### 요청 URL
@@ -233,6 +239,7 @@ V1컬렉션의 동적색인 스케줄 설정상태를 조회한다.
 	}
 
 
+<a name="DYNAMIC_INDEX_API"></a>
 ## 5. 동적색인 API
 
 주기적 색인이 아닌 동적으로 필드를 업데이트하고, 문서를 추가 및 삭제할 수 있는 API이다. 성공시 `status` 값은 0이 리턴된다.
@@ -347,6 +354,7 @@ DELETE /service/index?collectionId=VM
 }
 ```
 
+<a name="DICTIONARY_SERVICE_API"></a>
 ## 6. 사전 서비스 API
 
 한글분석기, 상품명 분석기 등을 서비스 원격으로 사용하기 위한 API이다.

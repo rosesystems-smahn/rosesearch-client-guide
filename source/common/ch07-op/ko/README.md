@@ -3,15 +3,17 @@
 
 목차
 ---
-1. 구성
-2. 구동
-3. 운영상태확인
-4. 중단
-5. 모니터링
-6. 상황별조치
+1. [구성](#ARCHITECTURE)
+2. [구동](#RUNNING)
+3. [운영상태확인](#STATUS_MONITORING)
+4. [중단](#PAUSE)
+5. [모니터링](#MONITORING)
+6. [상황별조치](#BUG_FIX)
 
 <span></span>
-1. 구성
+
+<a name="ARCHITECTURE"></a>
+## 1. 구성
 ------
 
 ### 디렉토리 구조
@@ -53,8 +55,8 @@ fastcatsearch 검색엔진 설치 시 다음과 같은 디렉토리가 구축되
 ||db / dict|분석기에서 사용하는  사전, 사전db|
 
 
-
-2. 구동
+<a name="RUNNING"></a>
+## 2. 구동
 ----
 
 ### 구동스크립트
@@ -71,6 +73,8 @@ daemon_account=fastcat
 `java_path`는 java가 사용자의 PATH에 걸려있지 않을 경우 설정해주며,
 `daemon_account`는 서비스등록하여 자동구동시 사용되는 계정이름이다.
 
+
+<a name="STATUS_MONITORING"></a>
 3. 운영상태확인
 ----------
 
@@ -86,6 +90,8 @@ $ ps -ef | grep java | grep fastcatsearch | grep Bootstrap
 root  27351  3749  0 11:33 pts/13   00:01:44 /usr/lib/jvm/java-7-oracle/bin/java -Xmx1g -server -Dlogback.configurationFile=........
 ```
 
+
+<a name="PAUSE"></a>
 4. 중단
 ---
 
@@ -123,7 +129,8 @@ $ kill -9 <PID>
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/op-manual/ko/img/220.jpg)
 
 
-5. 모니터링
+<a name="MONITORING"></a>
+## 5. 모니터링
 ----------
 
 ### 대시보드
@@ -172,7 +179,9 @@ $ kill -9 <PID>
 |1	|에러사항을 확인후 클릭한다.|검색에러, 내부 시스템 에러등을 확인할 수 있으며 검색에러는 대부분 검색어 이상으로 인한 파싱에러이므로, 내부 시스템에러를 중점적으로 확인하도록 한다.|
 |2	|자세한 에러 Trace를 확인한다.|에러로그중 시스템에 이상을 줄 만한 에러는 OutOfMemory Error 또는 Heap space error이다.<br>메모리 관련 에러 발생시 검색엔진을 재시동하도록 한다.|
 
-6. 상황별조치
+
+<a name="BUG_FIX"></a>
+## 6. 상황별조치
 ------------
 
 ### 검색이 장시간 반응하지 않거나 아무런 결과를 내지 않는 경우

@@ -4,19 +4,20 @@
 목차
 ---
 
-1. 검색엔진 설치
-2. 검색엔진 구동 (Linux)
-3. 검색엔진 구동 (Windows)
-4. 관리도구 설치
-5. 관리도구 구동 (Linux)
-6. 관리도구 구동 (Windows)
+1. [검색엔진 설치](#INSTALL)
+2. [검색엔진 구동 (Linux)](#STARTUP_LINUX)
+3. [검색엔진 구동 (Windows)](#STARTUP_WINDOWS)
+4. [관리도구 설치](#ADMINTOOLS_INSTALL)
+5. [관리도구 구동 (Linux)](#ADMINTOOLS_STARTUP_LINUX)
+6. [관리도구 구동 (Windows)](#ADMINTOOLS_STARTUP_WINDOWS)
 
 <span></span>
 
-1. 검색엔진 설치
---------------
 
-### 설치
+<a name="INSTALL"></a>
+## 1. 검색엔진 설치
+
+### 1.1 설치
 
 제공받은 검색엔진 패키지를 최종 설치할 디렉토리로 복사하여 설치완료한다.
 디렉토리구조는 아래와 같다. `fastcatsearch-버전` 디렉토리 이하참조.
@@ -24,7 +25,7 @@
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/install-manual/ko/img/233.jpg)
 
  
-### 서비스 포트준비
+### 1.2 서비스 포트준비
 
 검색엔진은 기본적으로 8090 포트를 사용하며 conf/id.properties 중 포트번호를 수정한다.
 
@@ -34,7 +35,9 @@ master=node1
 servicePort=8090
 ```
  
-2. 검색엔진 구동 (Linux)
+
+<a name="STARTUP_LINUX"></a>
+## 2. 검색엔진 구동 (Linux)
 ----------------------
 
 ### 디렉토리구조
@@ -106,7 +109,9 @@ kill 30901
 Server Shutdown Complete! 메시지가 보이면 검색엔진 종료가 완료된것이다.
 tail 로그를 빠져나가기위해 `CTRL-C` 를 입력하여 프롬프트로 빠져나온다.
 
-3. 검색엔진 구동 (Windows)
+
+<a name="STARTUP_WINDOWS"></a>
+## 3. 검색엔진 구동 (Windows)
 ------------------------
 
 ### 디렉토리구조
@@ -150,7 +155,9 @@ cmd 창에는 fastcatsearch 를 시작했으며, `logs/system.log` 파일을 확
 단순히 cmd 창에서 CTRL-C 를 입력하여 프로세스를 종료한다.
 검색엔진 종료시 로그에서 Server Shutdown Complete! 메시지가 보이면 검색엔진 종료가 완료된것이다.
 
-4. 관리도구 설치
+
+<a name="ADMINTOOLS_INSTALL"></a>
+## 4. 관리도구 설치
 --------------
 
 ### 설치
@@ -181,7 +188,8 @@ cmd 창에는 fastcatsearch 를 시작했으며, `logs/system.log` 파일을 확
 </Call>
 ```
 
-5. 관리도구 구동 (Linux)
+<a name="ADMINTOOLS_STARTUP_LINUX"></a>
+## 5. 관리도구 구동 (Linux)
 ----------------------
 
 ### 시작스크립트 실행
@@ -241,7 +249,8 @@ $ tail -f logs/server.log
 $ sh stop-console.sh
 ```
  
-6. 관리도구 구동 (Windows)
+<a name="ADMINTOOLS_STARTUP_WINDOWS"></a>
+## 6. 관리도구 구동 (Windows)
 ------------------------
 
 ### 시작스크립트 실행
