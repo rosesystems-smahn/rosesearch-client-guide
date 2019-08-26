@@ -47,15 +47,15 @@ Fastcatsearch는 대용량문서를 빠른 시간안에 색인 및 검색이 가
 
 #### 1.2.2. 분산서버구성
 
-##### 장애대비 이중화 구성
+##### 1.2.2.1. 장애대비 이중화 구성
 2대 이상의 데이터노드를 구성시 1대 서버장애시 나머지 서버로 검색서비스가 가능하다.
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/327.jpg)
 
-##### 데이터파티셔닝 구성
+##### 1.2.2.2. 데이터파티셔닝 구성
 문서량이 많아서 2대 이상의 서버에 문서를 나누어 색인후 검색시 병합하여 검색한다.
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/326.jpg)
 
-##### 복합부하분산구성
+##### 1.2.2.3. 복합부하분산구성
 장애대비 이중화 + 부하분산 + 데이터파티셔닝을 모두 포함한 구성이다.
 예시에서는 검색노드 2대, 데이터노드 3대로 총 5대의 서버로 구성하였다.
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/328.jpg)
@@ -66,14 +66,14 @@ Fastcatsearch는 대용량문서를 빠른 시간안에 색인 및 검색이 가
 
 ### 2.1. 설치환경
 
-##### 소스핸들링
+##### 2.1.1 소스핸들링
 시스템에 메이븐이 설치되어 있어야 한다.
 
-##### 지원 운영체제
+##### 2.1.2 지원 운영체제
 Java 1.6이상이 설치된 모든 운영체제에 설치가 가능하다.
 
  
-##### 하드웨어사양
+##### 2.1.3 하드웨어사양
 
 표2. 하드웨어사양
 
@@ -83,7 +83,7 @@ Java 1.6이상이 설치된 모든 운영체제에 설치가 가능하다.
 |Memory	|2G			|8G 이상				|
 |Disk	|10GB		|100GB 이상				|
 
-##### 검색엔진사양
+##### 2.1.4 검색엔진사양
 
 하드웨어 사양과는 달리, 순수하게 검색엔진에서 필요로 하는 리소스를 설명한다.
 
@@ -107,9 +107,9 @@ Java 1.6이상이 설치된 모든 운영체제에 설치가 가능하다.
 |Maven	|Ver 2.0 이상																					|
 |기타	|인터넷 접속 가능환경 <br> Maven 빌드시 의존 라이브러리를 받아올 수 있도록 인터넷 환경 필요	|
  
-####2.2.2. 다운로드와 빌드
+#### 2.2.2. 다운로드와 빌드
  
-##### 소스다운로드
+##### 2.2.2.1. 소스다운로드
 
 소스는 github에 위치해 있으며, 각 모듈별로 다른 프로젝트로 구성되어 있다. 아래 3개의 프로젝트에서 소스를 동일한 디렉토리 하위로 다운로드 받는다.
 
@@ -137,7 +137,7 @@ drwxr-xr-x+  18 swsong  staff    612  6 26 22:08 fastcatsearch
 drwxr-xr-x+  15 swsong  staff    510  6 13 09:53 fastcatsearch-console
 ```
  
-##### 빌드
+##### 2.2.2.2. 빌드
 
 maven을 사용하여 소스를 빌드한다. 빌드 스크립트는 아래와 같으며, 해당위치에서 mvn이 실행가능하도록 환경 Path 에 설정되어 있어야 한다.
 
@@ -248,7 +248,7 @@ cp -r fastcatsearch-console/target/fastcatsearch-console* $BUILD_TARGET/fastcats
 [INFO] ------------------------------------------------------------------------
 ```
  
-##### 패키지
+##### 2.2.2.3. 패키지
 
 빌드가 성공한 후 `build/` 디렉토리 하위의 모습은 다음과 같다.
 
@@ -258,7 +258,7 @@ fastcatsearch와 fastcatsearch-console 두개의 패키지가 생성되며, `fas
 
 ### 2.3. 검색엔진설치
 
-##### 파일복사
+##### 2.3.1. 파일복사
 
 위에서 빌드된 패키지를 설치위치에 단순히 복사하는 것으로 설치는 완료된다.
 
@@ -267,7 +267,7 @@ $ mv -r fastcatsearch [설치위치]/
 $ mv -r fastcatsearch-console [설치위치]/
 ```
  
-##### 검색 통신포트설정
+##### 2.3.2. 검색 통신포트설정
 
 검색엔진에서는 검색요청을 받을때 디폴트로 8090포트를, 내부노드끼리 통신은 9090포트를 사용한다.
 
@@ -281,7 +281,7 @@ $ mv -r fastcatsearch-console [설치위치]/
 |내부통신	|9090	|fastcatsearch/conf/node-list.xml		|
 |웹관리도구	|8080	|fastcatsearch-console/etc/jetty.xml	|
  
-#### 노드설정
+##### 2.3.3. 노드설정
 
 여러서버 설정시 id.properties 파일을 수정하여 자신의 노드ID와 Master 노드ID를 설정해주어야 분산구성이 가능하다.
 
@@ -298,7 +298,7 @@ $ mv -r fastcatsearch-console [설치위치]/
 - master : 마스터 노드아이디
 - servicePort : 서비스할 포트아이디
 
-##### 포트오픈시 점검사항
+##### 2.3.4. 포트오픈시 점검사항
 
 ```
 노드들사이에 8090포트와 9090포트는 모두 열려있어야 함.
@@ -306,7 +306,7 @@ $ mv -r fastcatsearch-console [설치위치]/
 검색노드의 경우 WAS쪽으로 8090포트가 열려있어야 검색요청을 받을 수 있음.
 ```
  
-##### 웹관리도구포트수정
+##### 2.3.5. 웹관리도구포트수정
 
 기존적으로 8080포트를 사용하나, 변경하려면 etc/jetty.xml 중 jetty.port 항목을 수정한다.
 
@@ -330,14 +330,14 @@ $ mv -r fastcatsearch-console [설치위치]/
 
 ### 2.4. 검색엔진 서비스 등록
 
-##### 메모리설정
+##### 2.4.1. 메모리설정
 
 - Linux : `bin/environment.sh` 에서는 다음과 같이 jvm 등의 메모리 설정을 할 수 있다.
 `HEAP_MEMORY_SIZE=4g`
 - Windows :  `bin/environment.bat` 파일에서 수정가능하다.
 `java -Xmx4g ... `
 
-##### 서비스등록
+##### 2.4.2. 서비스등록
 
 서비스에 등록을 해두면 운영체제가 재시작되는 경우에도 검색엔진이 자동으로 시작된다.
 
@@ -346,24 +346,24 @@ $ mv -r fastcatsearch-console [설치위치]/
 |Linux		|service/bin/installDaemon.sh	|
 |Windows	|service/bat/installService.bat	|
 
-##### 서비스시작
+##### 2.4.3. 서비스시작
 
 - Linux : 시작 스크립트는 `bin/fastcatsearch start` 이며,  종료 시에는 `bin/fastcatsearch stop` 으로 종료한다.
 실행시 log파일이 자동으로 `tail` 을 사용해서 뿌려진다.
 로그를 그만보고자 하면 `ctrl^c`를 누르면 되며, 검색엔진은 background로 계속 실행된다.
 - Windows : `bin/fastcatsearch.bat` 파일을 더블 클릭하여 실행한다. 종료는 cmd 창을 닫으면 된다.
 
-##### 서비스종료
+##### 2.4.4. 서비스종료
 
 - Linux : `bin/daemon.sh stop` 를 호출한다.  또는 `bin/stop.sh` 를 호출하면 process를 찾아서 `kill` 한다.
 - Windows : 실행중인 cmd창을 닫는다.
 
-##### 프로세스확인
+##### 2.4.5. 프로세스확인
 
 - Linux : `ps -ef | grep java | grep fastcatsearch | grep Bootstrap`
 - Windows : 작업관리자 또는 프로세스가 실행된 cmd 창을 확인한다.
 
-##### 로그확인
+##### 2.4.6. 로그확인
 
 - Linux : `tail -f logs/system.log` 를 통해 시스템로그를 확인한다.
 - Windows :  `logs/system.log` 파일을 윈도우용 `tail` 프로그램 또는 텍스트편집기로 열어본다.
@@ -371,7 +371,7 @@ $ mv -r fastcatsearch-console [설치위치]/
 
 ### 2.5 관리도구 서비스 등록
 
-##### 서비스등록
+##### 2.5.1. 서비스등록
 
 서비스에 등록을 해두면 운영체제가 재시작되는 경우에도 검색엔진이 자동으로 시작된다.
 
@@ -380,29 +380,29 @@ $ mv -r fastcatsearch-console [설치위치]/
 |Linux		|service/bin/installDaemon.sh	|
 |Windows	|service/bat/installService.bat	|
 
-##### 서비스시작
+##### 2.5.2. 서비스시작
 
 시작스크립트를 호출한다.
 
 - Linux : `start-console.sh`
 - Windows : `start-console.cmd`
 
-##### 서비스종료
+##### 2.5.3. 서비스종료
 
 - Linux : `stop-console.sh` 를 호출한다.
 - Windows : 실행중인 cmd창을 닫는다.
 
-##### 프로세스확인
+##### 2.5.4. 프로세스확인
 
 - Linux : `ps -ef | grep java | grep start.jar`
 - Windows : 작업관리자 또는 프로세스가 실행된 cmd 창을 확인한다.
 
-##### 로그확인
+##### 2.5.5. 로그확인
 
 - Linux : `tail -f logs/server.log`
 - Windows : `logs/server.log` 파일을 윈도우용 tail 프로그램 또는 텍스트편집기로 열어본다.
 
-##### 관리도구 접속
+##### 2.5.6. 관리도구 접속
 
 웹브라우저를 이용하여 `http://[검색엔진설치IP]:[PORT]/console` 에 접속한다.
 로그인화면이 보이면 올바로 접속된 것이다.
@@ -600,7 +600,7 @@ ir.indexing.dynamic.indexing_period_SEC=1
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/276.jpg)
 
-##### 1) Realtime Query Request
+##### 4.2.1. Realtime Query Request
 
 컬렉션별 실시간 검색요청건수를 막대 그래프로 보여준다. 컬렉션별로 각각 다른 색깔로 표현하며 평균 QPS와, 현재 Realtime QPS를 보여준다.
 
@@ -612,7 +612,7 @@ ir.indexing.dynamic.indexing_period_SEC=1
 - Average QPS : 모니터링이 시작한 뒤로부터 측정된 평균 QPS (초당 요청쿼리건수)
 - Realtime QPS : 현재 초의 QPS 값
  
-##### 2) Collections
+##### 4.2.2. Collections
 
 컬렉션별로 색인문서수와 차지하는 디스크 용량와 업데이터된 시간을 보여준다.
 
@@ -621,7 +621,7 @@ ir.indexing.dynamic.indexing_period_SEC=1
 - Disk Size : 색인용량
 - Update Time : 마지막 색인 시각
 
-##### 3) Indexing Result
+##### 4.2.3. Indexing Result
 
 컬렉션별로 색인결과상태와 문서수 색인소요시간, 그리고 종료시간을 보여준다.
 
@@ -631,7 +631,7 @@ ir.indexing.dynamic.indexing_period_SEC=1
 - Duration : 색인소요시간
 - Time : 마지막 색인 시각
  
-##### 4) Server Status
+##### 4.2.4. Server Status
 
 서버별로 주소, 포트, 서버상태, 디스크 사용률, CPU 사용률, 시스템 Load등을 보여준다.
 
@@ -646,14 +646,14 @@ ir.indexing.dynamic.indexing_period_SEC=1
 - System Memory : System 메모리리 용량
 - Load : System 로드
  
-##### 5) Notifications
+##### 4.2.5. Notifications
 
 검색엔진에서 발생하는 중요한 메시지에 대해 발생한 Notification을 보여준다. 색인 시작/종료 등의 메시지를 확인할수 있다.
 
 - Message : Notification 메시지 내용
 - Time : Notification 발생시각
  
-##### 6) Task Status
+##### 4.2.6. Task Status
 
 검색엔진 내부 작업(Task)들의 실행결과를 보여준다.
 
@@ -754,7 +754,7 @@ JDBC드라이버 ClassNotFoundException 발생!
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/374.jpg)
 
-##### 1) SQL 쿼리문 입력란
+##### 4.3.5.1. SQL 쿼리문 입력란
 
 SQL쿼리를 입력한다.
 
@@ -768,7 +768,7 @@ SQL쿼리를 입력한다.
 제한 갯수가 100을 넘을 경우에도 결과는 최대 100개까지만 출력된다.
 ```
  
-##### 2) SQL 쿼리결과 출력란
+##### 4.3.5.2. SQL 쿼리결과 출력란
 
 쿼리의 Select 컬럼별로 데이터를 출력한다.
 
@@ -815,15 +815,15 @@ SQL쿼리로 데이터를 가져와서 스키마 설정을 이용해 객체로 �
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/284.jpg)
 
-##### 1) Collection Information & Data Mapping
+##### 4.3.8.1. Collection Information & Data Mapping
 
 컬렉션 정보와 데이터맵핑 정보를 확인한다.
  
-##### 2) Fields
+##### 4.3.8.2. Fields
 
 스키마 필드정보를 확인한다.
  
-##### 3) Everything is OK, Create Collection
+##### 4.3.8.3. Everything is OK, Create Collection
 
 모든 사항이 올바르다면, 클릭하여 컬렉션을 생성한다.
  
@@ -913,7 +913,7 @@ File Upload시 미리 존재하는 단어와 중복될 경우 입력이 중단�
 Clean을 이용해 기존 데이터를 지우고 upload하는 것을 추천한다.
 ```
  
-##### 사전 텍스트 파일 포맷
+##### 4.4.4 사전 텍스트 파일 포맷
 
 줄단위로 Entry를 구분하며, 사전별로 한줄씩 사용되는 포맷은 다음과 같다.
 
@@ -938,7 +938,7 @@ Clean을 이용해 기존 데이터를 지우고 upload하는 것을 추천한�
  
 #### 4.5.2. Schema
 
-##### Overview
+##### 4.5.2.1. Overview
 
 필드, 주키, 분석기, 검색인덱스, 필드인덱스, 그룹인덱스를 한눈에 확인할 수 있다.
 
@@ -1024,7 +1024,7 @@ STRING/ASTRING 문자열 필드의 경우 가변길이라면 Size를 설정해�
 
 수정된 스키마를 확인한다. 수정된 스키마는 다음 전체색인시 반영되며, 전체색인후 수정스키마는 삭제된다.
 
-##### Work Schema
+##### 4.5.2.2. Work Schema
 
 다음번 전체색인시 반영을 위해 수정중인 스키마를 확인한다.
 
@@ -1052,11 +1052,11 @@ STRING/ASTRING 문자열 필드의 경우 가변길이라면 Size를 설정해�
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/339.jpg) 
  
-####4.5.4. Data
+#### 4.5.4. Data
 
 색인수행후 저장된 색인데이터를 조회해볼 수 있다.
  
-##### Raw 탭
+##### 4.5.4.1. Raw 탭
 
 필드별 데이터를 그대로 보여준다. 
 
@@ -1073,7 +1073,7 @@ Store 여부를 확인하도록 한다.
  
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/340.jpg) 
 
-##### Analyzed Index 탭
+##### 4.5.4.2. Analyzed Index 탭
 
 Search Index 필드, 즉 검색필드의 데이터를 분석하여 보여준다.
 
@@ -1114,7 +1114,7 @@ Search Index 필드, 즉 검색필드의 데이터를 분석하여 보여준다.
 
 원본 데이터가 DB에 존재할때 참조할 수 있는 JDBC 리스트이다. 컬렉션에 관계없이 전영역에서 공통으로 사용된다.
 
-##### Edit
+##### 4.5.5.1. Edit
 
 데이터소스 수정
 
@@ -1155,7 +1155,7 @@ Before SQL과 After SQL 은 오직 Update SQL만 실행할 수 있다. Select �
 
 색인상태를 확인하고 색인관리작업을 수행할 수 있다.
 
-##### Status
+##### 4.5.6.1. Status
 
 색인상태확인
 
@@ -1188,7 +1188,7 @@ Before SQL과 After SQL 은 오직 Update SQL만 실행할 수 있다. Select �
 - End : 종료시각
 - Duration : 소요시간
  
-##### Schedule
+##### 4.5.6.2. Schedule
 
 색인스케쥴
 
@@ -1212,7 +1212,7 @@ Before SQL과 After SQL 은 오직 Update SQL만 실행할 수 있다. Select �
 
 스케쥴을 검색엔진에 적용한다.
  
-##### Build
+##### 4.5.6.3. Build
 
 색인작업실행
 
@@ -1236,13 +1236,13 @@ Before SQL과 After SQL 은 오직 Update SQL만 실행할 수 있다. Select �
 - End : 종료시각
 - Duration : 소요시간
 
-##### History
+##### 4.5.6.4. History
 
 색인작업 결과리스트
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/348.jpg) 
  
-##### Management
+##### 4.5.6.5. Management
 
 색인데이터관리
 
@@ -1307,7 +1307,7 @@ Before SQL과 After SQL 은 오직 Update SQL만 실행할 수 있다. Select �
 - Name : 분석기 이름
 - Class : 분석기 클래스명
 
-##### 제공분석기
+##### 4.6.2.1. 제공분석기
 
 |#	|ID					|Name							|Class													|
 |---|-------------------|-------------------------------|-------------------------------------------------------|
@@ -1320,7 +1320,7 @@ Before SQL과 After SQL 은 오직 Update SQL만 실행할 수 있다. Select �
  
 #### 4.6.3. 한글분석기 Plugin
 
-##### Settings
+##### 4.6.3.1. Settings
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/352.jpg) 
 
@@ -1349,7 +1349,7 @@ Before SQL과 After SQL 은 오직 Update SQL만 실행할 수 있다. Select �
 - Method : GET 또는 POST 방식으로 
 - Class : 액션 클래스명
 
-##### Tools
+##### 4.6.3.2. Tools
 
 분석기툴을 통해 분석시뮬레이션 수행
 
@@ -1468,7 +1468,7 @@ OutOfMemory 와 같은 메모리부족에러 발생시에는 JVM이 완전히 �
 
 Notification은 내부DB에 기록되며, 선택한 Notification에 대해 운영자에게 이메일로 알림설정도 가능하다.
 
-##### List
+##### 4.8.1.1. List
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/357.jpg) 
 
@@ -1476,7 +1476,7 @@ Notification은 내부DB에 기록되며, 선택한 Notification에 대해 운�
 
 2) 리스트에서 클릭을 하면 하단에 전체 메시지를 보여준다.
  
-##### 알림설정
+##### 4.8.8.2. 알림설정
 
 운영자가 선택한 Notification은 이메일과 SMS로 알림등록을 할 수 있다.
 
@@ -1487,7 +1487,7 @@ Notification은 내부DB에 기록되며, 선택한 Notification에 대해 운�
 - Alert To : 알림을 받을 사람
 - Edit : 설정을 수정할 수 있는 팝업이 나타난다.
 
-##### 설정수정
+##### 4.8.8.3. 설정수정
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/359.jpg) 
 
@@ -1526,7 +1526,7 @@ Notification은 내부DB에 기록되며, 선택한 Notification에 대해 운�
 
 #### 4.9.1. Search
 
-##### 구조화된 쿼리검색
+##### 4.9.1.1. 구조화된 쿼리검색
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/316.jpg) 
 
@@ -1555,7 +1555,7 @@ Notification은 내부DB에 기록되며, 선택한 Notification에 대해 운�
 더 자세한 사항은 쿼리API 매뉴얼을 참고한다.
 ```
  
-##### 쿼리스트링 검색
+##### 4.9.1.2. 쿼리스트링 검색
 
 폼없이 쿼리스트링자체로 검색을 수행한다.
 
@@ -1626,13 +1626,13 @@ DB명에 system 입력시 시스템 DB를 사용하고, Plugin DB를 사용하�
 - `Add Category` : 카테고리를 하나 추가한다.
 - `Save Changes` : 변경사항을 저장하고 검색데모페이지로 이동한다.
  
-###4.11. 계정관리
+### 4.11. 계정관리
 
 운영자별로 권한을 설정하여 사용하기 위해서는 우측 상단의 설정버튼을 클릭한다.
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/368.jpg) 
  
-####4.11.1. 그룹
+#### 4.11.1. 그룹
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/main-manual/ko/img/365.jpg) 
 
