@@ -1,14 +1,15 @@
-# PHP 개발가이드
+PHP 개발가이드
 ==============
 
-### 목차
+목차
 ---
-1. 준비사항
-2. API 라이브러리
-3. 검색 페이지
-4. search_item 페이지 예제
-5. 기타서비스 페이지
+1. [준비사항](#SETTINGS)
+2. [API 라이브러리](#API_LIB)
+3. [검색 페이지](#SEARCH_PAGE)
+4. [search_item 페이지 예제](#EXAMPLES)
+5. [기타서비스 페이지](#ETC_PAGES)
 
+<a name="SETTINGS"></a>
 ## 1. 준비사항
 
 ### 하드웨어 요구사항
@@ -34,14 +35,15 @@ php 상에서 fastcatsearch 엔진을 이용하기 위해서는 다음과 같은
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/dev-php/ko/img/205.jpg)
 
-## 2. 개 요
+## 1.1. 개 요
 
 php를 이용한 검색은 commons-library 를 거쳐 communicator 를 통해 검색엔진과 소통한다.
 검색되어진 결과는 search_item.php 를 통해 표현되어 진다.
 
 ![](https://raw.githubusercontent.com/fastcat-co/fastcat-manuals/master/fastcatsearch/dev-php/ko/img/207.jpg)
 
-## 3. API 라이브러리
+<a name="API_LIB"></a>
+## 2. API 라이브러리
 
 fastcat_api.php 는 SearchQueryStringer / FastcatCommunicator / PageNavigator 의 3개 클래스로 이루어진다.
 
@@ -93,7 +95,8 @@ $pn->setTotal({총게시물갯수});
 <? } ?>
 ```
 
-## 4. 검색페이지
+<a name="SEARCH_PAGE"></a>
+## 3. 검색페이지
 
 ### search 페이지
 
@@ -191,7 +194,8 @@ function searchBoard($collection,$fastcat,$query,$stype,$keyword,$hkeyword,$otyp
 }
 ``` 
 
-### search_item_xxx 페이지 예제
+<a name="EXAMPLES"></a>
+## 4. search_item_xxx 페이지 예제
 
 search_item 페이지는 각각 검색 컬렉션 별 로 제작하도록 한다, (search_item_bbs.php / search_item_new.php 등)
 검색엔진과 통신해서 가지고 온 데이터를 이용해 화면에 출력해 주는 역할을 한다. ᅟ
@@ -242,6 +246,7 @@ search 페이지는 전체적인 레이아웃을 출력하며, search_item 페�
 <? } ?>
 ```
 
+<a name="ETC_PAGES"></a>
 ## 5. 기타서비스 페이지
 
 ### 검색어 자동완성

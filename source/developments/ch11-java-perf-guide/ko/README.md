@@ -1,7 +1,7 @@
-# JAVA 성능튜닝가이드
+JAVA 성능튜닝가이드
+===================
 
-
-### 목차
+목차
 ---
 
 1. [Tools](#Tools)
@@ -10,7 +10,7 @@
 
 
 <a name="Tools"></a>
-1. Tools
+## 1. Tools
 ---------
 
 ### jps
@@ -49,7 +49,7 @@ jstack <JAVA PID> > thread1.txt
 
 
 <a name="CaseStudy"></a>
-2. Case Study
+## 2. Case Study
 ----------
 
 ### Stop-the-world Pause Detection
@@ -88,7 +88,7 @@ Eden이 14G로 다소 크기 때문에 Young영역을 7G로 제한하면 약 6G�
 Colletor는 기존 14G의 Object를 살펴보는것에서 6G만 살펴보는 것으로 부담이 줄어든다.
 
 <a name="Swap"></a>
-3. Swap
+## 3. Swap
 ----------
 `Swap` 메모리의 특성 상 물리 메모리에 비해 속도가 느리다. 따라서 지속적으로 메모리를 사용하는 검색엔진의 특성 상 스왑핑을 최소화하여야 한다.
 일시적으로 스왑 메모리를 제거하려면 다음 명령어를 사용한다.
